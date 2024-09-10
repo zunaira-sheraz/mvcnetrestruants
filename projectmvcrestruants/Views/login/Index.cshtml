@@ -1,0 +1,43 @@
+﻿
+
+@model Login
+@{
+	ViewBag.Title = "login";
+}
+
+@section Scripts{
+	@{await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+}}
+<form asp-action="Index" method="post">
+	
+<div class="maindiv">
+		<div class="div1">
+			<img alt="logo" src="/css/images/images.jpeg"/>
+		</div>
+	<div class="div2">
+
+		<h1>Sign In</h1>
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<label asp-for="email" class="form-label"></label>
+		<input asp-for="email" class="form-control" />
+		<span asp-validation-for="email" class="text-danger"></span>
+	<br />
+		<label asp-for="password" class="form-label"></label>
+		<input asp-for="password" class="form-control" />
+		<span asp-validation-for="password" class="text-danger"></span>
+
+			@if (!string.IsNullOrEmpty(ViewBag.LoginError))
+			{
+				<span class="text-danger">@ViewBag.LoginError</span>
+			}
+			
+	
+		<div class="grid-center mt-3">
+				<!-- Login Button (Redirect to Login View in Login Folder) -->
+				<a href="@Url.Action("Index", "Registration")" class="btn btn-primary">New User</a>
+			<button type="submit" class="btn  btn-primary">Login </button>
+		</div>
+
+	</div>
+	</div>
+</form>

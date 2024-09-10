@@ -1,0 +1,64 @@
+﻿@model Login
+@{
+    ViewBag.Title = "Sign Up";
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}
+
+<form asp-action="Index" method="post">
+   
+    <div class="maindiv">
+        <div class="div1">
+            <img alt="logo" src="/css/images/images.jpeg" />
+        </div>
+        <div class="row d-flex div2">
+            <h1>Sign Up</h1>
+
+            <!-- Username -->
+            <label asp-for="UserName" class="form-label-md"></label>
+            <input asp-for="UserName" class="form-control-md" />
+            <span asp-validation-for="UserName" class="text-danger"></span>
+           
+
+            <!-- Date of Birth -->
+            <label asp-for="dob" class="form-label-md"></label>
+            <input asp-for="dob" class="form-control-mdl" />
+            <span asp-validation-for="dob" class="text-danger"></span>
+            <span asp-validation-summary =""></span>
+            <!-- Email -->
+            <label asp-for="email" class="form-label-md"></label>
+            <input asp-for="email" class="form-control-md" />
+            <span asp-validation-for="email" class="text-danger"></span>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Password -->
+            <label asp-for="password" class="form-label-md"></label>
+            <input asp-for="password" class="form-control-md" type="password" />
+            <span asp-validation-for="password" class="text-danger"></span>
+            @if (!string.IsNullOrEmpty(ViewBag.LoginError))
+            {
+                <div class="text-danger">@ViewBag.LoginError</div>
+            }
+        
+                    
+             
+
+            <!-- Confirm Password -->
+            <label asp-for="confirmpassword" class="form-label-md"></label>
+            <input asp-for="confirmpassword" class="form-control-md" type="password" />
+            <span asp-validation-for="confirmpassword" class="text-danger"></span>
+
+            <div class="grid-center mt-3">
+                <!-- Sign Up Button (Submit the form) -->
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+
+                <!-- Redirect to Sign-In Page -->
+                <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Already Account</a>
+            </div>
+        </div>
+    </div>
+</form>
