@@ -5,14 +5,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using projectmvcrestruants.Models;
 
 #nullable disable
 
 namespace projectmvcrestruants.Migrations
 {
     [DbContext(typeof(Registration))]
-    [Migration("20240906102155_initial")]
+    [Migration("20240911055041_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
