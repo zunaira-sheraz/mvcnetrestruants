@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace projectmvcrestruants.Migrations
 {
-    [DbContext(typeof(Registration))]
-    partial class RegistrationModelSnapshot : ModelSnapshot
+    [DbContext(typeof(Account))]
+    partial class AccountModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -21,7 +21,7 @@ namespace projectmvcrestruants.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("projectmvcrestruants.Models.Login", b =>
+            modelBuilder.Entity("projectmvcrestruants.Models.AccountContext", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
@@ -31,7 +31,8 @@ namespace projectmvcrestruants.Migrations
 
                     b.Property<string>("UserName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime?>("dob")
                         .IsRequired()
@@ -39,7 +40,8 @@ namespace projectmvcrestruants.Migrations
 
                     b.Property<string>("email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("password")
                         .IsRequired()
@@ -48,7 +50,7 @@ namespace projectmvcrestruants.Migrations
 
                     b.HasKey("id");
 
-                    b.ToTable("Logins");
+                    b.ToTable("Accounts");
                 });
 #pragma warning restore 612, 618
         }

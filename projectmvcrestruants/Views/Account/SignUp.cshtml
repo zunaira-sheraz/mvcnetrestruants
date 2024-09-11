@@ -1,4 +1,4 @@
-﻿@model Login
+﻿@model AccountContext
 @{
     ViewBag.Title = "Sign Up";
 }
@@ -9,7 +9,7 @@
     }
 }
 
-<form asp-action="Index" method="post">
+<form asp-action="SignUp" method="post">
    
     <div class="maindiv container-fluid">
         <div class="div1">
@@ -52,12 +52,12 @@
             <input asp-for="confirmpassword" class="form-control-md" type="password" />
             <span asp-validation-for="confirmpassword" class="text-danger"></span>
 
-            <div class="grid-center mt-3">
+            <div class="justify-content-center mt-3">
                 <!-- Sign Up Button (Submit the form) -->
                 <button type="submit" class="btn btn-primary">Sign Up</button>
 
                 <!-- Redirect to Sign-In Page -->
-                <a href="@Url.Action("Index", "Login")" class="btn btn-primary">Already Account</a>
+                <a href="@Url.Action("SignIn", "Account")" class="btn btn-primary">Already Account</a>
             </div>
         </div>
     </div>
