@@ -1,0 +1,82 @@
+﻿@model projectmvcrestruants.Models.Account
+
+@{
+    ViewBag.Title = "Account Details";
+}@{
+    Layout = "_Layout";
+}
+<div class="container m-5 ">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-12 ">
+            <div class="card shadow-lg">
+                
+                <div class="card-body">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr>
+                                <td><strong>Username:</strong></td>
+                                <td>@Model.UserName</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Email:</strong></td>
+                                <td>@Model.email</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Date of Birth:</strong></td>
+                                <td>@Model.dob?.ToString("yyyy-MM-dd")</td>
+                            </tr>
+                           
+                            <tr>
+                              
+                                  <td>
+                                    <form asp-action="EditAccountDetails" asp-controller="Account" method="get">
+                                        <button type="submit" class="bg-logo btn btn-outline-primary">Edit</button>
+                                      </form>
+                                   </td>
+                                  <td>
+                                    <form asp-action="DeleteAccount" asp-controller="Account" method="post">
+                                        <a class="btn btn-outline-primary text-white bg-logo" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete </a>
+
+                                    </form>
+                                    </td>
+                         
+                              </tr>
+                        
+                   </tbody>
+            </table>
+            </div>
+              
+            </div>
+       </div>
+
+     
+    </div>
+
+
+</div>
+<!-- Account Deletion Modal -->
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Account</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your account?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="DeleteAccount" asp-controller="Account" method="post">
+                    <input type="hidden" name="id" value="@Model.id" />
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

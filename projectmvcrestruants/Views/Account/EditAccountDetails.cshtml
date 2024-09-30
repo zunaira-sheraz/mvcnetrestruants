@@ -1,0 +1,57 @@
+﻿
+@model Account
+@{
+    ViewBag.Title = "edit";
+    Layout = "_Layout2";
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial.cshtml");
+    }
+}
+
+<form asp-action="EditAccountDetails" method="post">
+   
+    <div class="maindiv container-fluid">
+        <div class="div1">
+            <img alt="logo" src="/css/images/images.jpeg" />
+        </div>
+        <div class="row d-flex div2">
+            <h1>Edit Information</h1>
+
+           
+                <!-- Hidden input for Account ID -->
+                <input type="hidden" asp-for="id" value="@Model.id" /> <!-- Ensure the ID is set correctly -->
+
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" value="@Model.UserName" /> <!-- Ensure correct binding -->
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="email" class="control-label"></label>
+                    <input asp-for="email" class="form-control" value="@Model.email" /> <!-- Ensure correct binding -->
+                    <span asp-validation-for="email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="dob" class="control-label"></label>
+                    <input asp-for="dob" class="form-control" type="date" value="@Model.dob?.ToString("yyyy-MM-dd")" /> <!-- Date format for input -->
+                    <span asp-validation-for="dob" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+
+                </div>
+        
+
+          
+          
+        </div>
+    </div>
+</form>
+
+  

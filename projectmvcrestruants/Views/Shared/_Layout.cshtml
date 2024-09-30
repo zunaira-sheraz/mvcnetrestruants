@@ -5,20 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - projectmvcrestruants</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/projectmvcrestruants.styles.css" asp-append-version="true" />
 </head>
 <body>
- <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <nav class="navbar navbar-expand-sm navbar-light bg-logo border-bottom box-shadow">
+        <div class="container-fluid">
+            <img src="~/css/images/logoimg.jpg" class="imglogo" />
+            <a class="navbar-brand text-white" asp-controller="Home" asp-action="Index">Restaurants</a>
+            <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <!-- Sidebar Toggle Button/Icon -->
+                        <a class="nav-link text-white" id="toggleSidebar">
+                            <i id="sidebarIcon" class="bi bi-justify" style="color:white;font-size:1.5rem;font-weight:lighter"></i>
+                        </a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="text-white btn btn-outline-primary" asp-controller="Account" asp-action="SignIn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex">
+        <!-- Sidebar Wrapper for Account Button and Home Icon -->
+        <div id="sidebar" class="bg-logo vh-100" style="width: 200px;">
+            <div id="sidebarContent">
+                <!-- Elastic Thread -->
+                <div class="elastic-thread"></div>
+
+                <!-- DashBoard Button (Links to Home Index) -->
+                <a id="dashboardButton" class="text-white btn bg-logo m-2" asp-action="Index" asp-controller="Home">DashBoard</a>
+
+                <!-- Account Button (Links to AccountDetails) -->
+                <a id="accountButton" class="text-white btn bg-logo m-2" asp-action="AccountDetails" asp-controller="Account">Account</a>
+
+                <!-- Home Icon (Initially Hidden, Links to Home Index) -->
+                <a id="homeIcon" class="text-white btn bg-logo m-0" asp-action="Index" asp-controller="Home" style="display:none;">
+                    <i class="bi bi-houses" style="font-size: 2rem; margin-right:30px;"></i>
+                </a>
+
+                <!-- Person Icon (Initially Hidden, Links to AccountDetails) -->
+                <a id="personIcon" class="text-white btn bg-logo m-0" asp-action="AccountDetails" asp-controller="Account" style="display:none;">
+                    <i class="bi bi-person" style="font-size: 2rem; margin-right:30px;"></i>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <main class="d-flex container-fluid">
+                @RenderBody()
+            </main>
+        </div>
     </div>
 
-   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        const toggleSidebar = document.getElementById("toggleSidebar");
+        const sidebar = document.getElementById("sidebar");
+        const thread = document.querySelector(".elastic-thread");
+        const accountButton = document.getElementById("accountButton");
+        const homeIcon = document.getElementById("homeIcon");
+        const personIcon = document.getElementById("personIcon");
+        const dashboardButton = document.getElementById("dashboardButton");
+
+        let isSidebarExpanded = true;
+
+        // Sidebar Toggle Functionality
+        toggleSidebar.addEventListener("click", function () {
+            if (isSidebarExpanded) {
+                // Contract sidebar with elastic stretch
+                sidebar.style.width = "50px";
+                sidebar.classList.add("sidebar-contracted");
+                sidebar.classList.remove("sidebar-expanded");
+
+                // Stretch thread, hide Account button, show Home and Person icons
+                thread.style.transform = "scaleX(3)";
+                accountButton.style.display = "none";
+                personIcon.style.display = "block"; // Show person icon when sidebar contracts
+                homeIcon.style.display = "block";  // Show home icon
+            } else {
+                // Expand sidebar with elastic pull-back
+                sidebar.style.width = "200px";
+                sidebar.classList.add("sidebar-expanded");
+                sidebar.classList.remove("sidebar-contracted");
+
+                // Pull back thread, show Account button, hide Home and Person icons
+                thread.style.transform = "scaleX(1)";
+                accountButton.style.display = "block";
+                personIcon.style.display = "none"; // Hide person icon when sidebar expands
+                homeIcon.style.display = "none";  // Hide home icon
+            }
+            isSidebarExpanded = !isSidebarExpanded;
+        });
+
+        // Event Listener for Dashboard and Home Icon (Links to Index Page)
+        dashboardButton.addEventListener("click", function () {
+            window.location.href = "/Home/Index";
+        });
+
+        homeIcon.addEventListener("click", function () {
+            window.location.href = "/Home/Index";
+        });
+
+        // Event Listener for Account and Person Icon (Links to AccountDetails Page)
+        accountButton.addEventListener("click", function () {
+            window.location.href = "/Account/AccountDetails";
+        });
+
+        personIcon.addEventListener("click", function () {
+            window.location.href = "/Account/AccountDetails";
+        });
+
+    </script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

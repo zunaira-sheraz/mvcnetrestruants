@@ -1,5 +1,7 @@
+
 html {
-  font-size: 14px;
+    font-size: 17px;
+ 
 }
 
 @media (min-width: 768px) {
@@ -51,4 +53,37 @@ button{
 .grid-center{
     display:flow;
     justify-content:center;
+}
+.bg-logo {
+    background-color: #062283;
+    color: snow;
+    
+}
+a{
+    color:white;
+}
+/* Keel (white dot) */
+/* Sidebar Styles */
+#sidebar {
+    transition: width 0.4s ease-in-out;
+}
+
+/* Elastic Thread */
+.elastic-thread {
+    height: 2px;
+    width: 50px;
+    background-color: transparent;
+    margin: 10px;
+    transform-origin: left;
+    transition: transform 0.6s ease-in-out;
+}
+
+/* Contracted Sidebar */
+.sidebar-contracted .elastic-thread {
+    transform: scaleX(3); /* Stretch the thread */
+}
+
+/* Expanded Sidebar */
+.sidebar-expanded .elastic-thread {
+    transform: scaleX(1); /* Thread back to normal */
 }

@@ -1,29 +1,65 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
-}
-@{
     Layout = "_Layout";
+    ViewBag.title = "Home";
 }
-<div class="container container-fluid ">
 
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-logo border-bottom box-shadow mb-3   ">
-        <div class="container-fluid bg-logo">
-        <img src="~/css/images/logo img.jpg" class="imglogo" />
-        <a class="navbar-brand">Restruants</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
-                <li class="nav-item">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-dark flex-row-reverse" asp-controller="Account"  asp-action="SignIn">Logout</a>
-                </li>
-            </ul>
+<div class="container mt-4">
+    <div class="row">
+        <!-- Card 1 -->
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+            <div class="card shadow-lg">
+                <img src="/css/images/milk.jpeg" class="card-img-top" alt="Milk">
+                <div class="card-body">
+                    <h5 class="card-title">Fresh 1 liter of milk</h5>
+                    <p class="card-text">RS 350</p>
+                    <button type="button" class=" bg-logo btn-outline-primary" >Click to Procced</button>
+                </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-3 ">
+            <div class="card shadow-lg">
+                <img src="/css/images/coldlatee.jpeg" class="card-img-top" alt="Milk" style="height:11rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Coffee Late</h5>
+                    <p class="card-text">RS 550</p>
+                    <button>click to procced</button>
+                </div>
+            </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+            <div class="card shadow-lg">
+                <img src="/css/images/dragonfruit.jpeg" class="card-img-top" alt="Milk">
+                <div class="card-body">
+                    <h5 class="card-title">Dragon Fruit</h5>
+                    <p class="card-text">RS 300</p>
+                    <button>click to procced</button>
+                </div>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+            <div class="card shadow-lg">
+                <img src="/css/images/milk.jpeg" class="card-img-top" alt="Milk">
+                <div class="card-body">
+                    <h5 class="card-title">Fresh 1 liter of milk</h5>
+                    <p class="card-text">RS 350</p>
+                    <button>click to procced</button>
+                </div>
+            </div>
+        </div>
+        <!-- Additional cards (repeat the same structure for more) -->
+        <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+            <div class="card shadow-lg">
+                <img src="/css/images/milk.jpeg" class="card-img-top" alt="Milk">
+                <div class="card-body">
+                    <h5 class="card-title">Fresh 1 liter of milk</h5>
+                    <p class="card-text">RS 350</p>
+                    <button>click to procced</button>
+                </div>
+            </div>
         </div>
     </div>
-</nav>
 </div>
+
